@@ -44,7 +44,7 @@ Run HOST App (Host)
 sh
 Copy code
 cd HOST-app
-npm dev
+npm run  dev
 Run Chat App (Micro-Frontend)
 sh
 Copy code
