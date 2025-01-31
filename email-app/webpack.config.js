@@ -1,4 +1,5 @@
 const { ModuleFederationPlugin } = require("webpack").container;
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -18,9 +19,12 @@ module.exports = {
       name: "email",
       filename: "remoteEntry.js",
       exposes: {
-        "./Email": "./src/Email",
+        "./Email": "./src/Email.jsx",
       },
       shared: ["react", "react-dom"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
     }),
   ],
 };

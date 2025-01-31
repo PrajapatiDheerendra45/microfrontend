@@ -1,16 +1,14 @@
 import React, { lazy, Suspense } from "react";
-import Chat from "../../chat-app/src/App";
-import Email from "../../email-app/src/App";
 
+const Chat = lazy(() => import("../../chat-app/src/App.jsx"));
+const Email = lazy(() => import("../../email-app/src/App.jsx"));
 
 function App() {
   return (
     <div>
-      <h1>Micro-Frontend Host App</h1>
-      <Suspense fallback={<div>Loading Chat...</div>}>
+      <h1>Main Application</h1>
+      <Suspense fallback={<div>Loading...</div>}>
         <Chat />
-      </Suspense>
-      <Suspense fallback={<div>Loading Email...</div>}>
         <Email />
       </Suspense>
     </div>

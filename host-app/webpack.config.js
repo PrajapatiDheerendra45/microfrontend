@@ -1,14 +1,15 @@
-const { ModuleFederationPlugin } = require("webpack").container;
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
   entry: "./src/main.jsx",
   mode: "development",
-  devServer: {
-    port: 3000,
-  },
   output: {
     publicPath: "http://localhost:3000/",
+  },
+  devServer: {
+    port: 3000,
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -21,6 +22,9 @@ module.exports = {
         email: "email@http://localhost:3002/remoteEntry.js",
       },
       shared: ["react", "react-dom"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
     }),
   ],
 };
